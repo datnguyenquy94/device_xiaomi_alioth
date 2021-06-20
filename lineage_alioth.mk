@@ -10,6 +10,8 @@ $(call inherit-product, device/xiaomi/alioth/device.mk)
 # Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
+PRODUCT_CHARACTERISTICS := nosdcard
+
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_alioth
 PRODUCT_DEVICE := alioth
