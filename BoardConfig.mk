@@ -24,9 +24,6 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_alioth
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/xiaomi/alioth
 TARGET_KERNEL_CONFIG := vendor/alioth_defconfig
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 
 #Manifest
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
