@@ -18,11 +18,13 @@ Memory  | 6 - 8 GB RAM
 Shipped Android Version | 11.0
 Storage | 128/256 GB (UFS 3.1 Flash)
 Battery | Li-Po 4520 mAh, non-removable, Quick Charge 3+
+Weight | 196 g (6.91 oz)
+Features | Fingerprint (side-mounted), accelerometer, gyro, proximity, compass, color spectrum
 Display | AMOLED, 120Hz, HDR10+, 1300 nits (peak) (~395 ppi density)
 Resolution | 1080 x 2400 pixels, 20:9 ratio
 Camera  | 48 MP, f/1.8, 26mm (wide), 1/2", 0.8µm, PDAF, 8 MP, f/2.2, 119˚ (ultrawide), 5 MP, f/2.4, 50mm (macro), 1/5.0", 1.12µm, AF
+Tests  | AnTuTu: 631850 (v8)
 
 ## Device picture
 
 ![Poco F3](https://www.devicespecifications.com/images/model/c79d55ee/320/main.jpg "Poco F3 in black")
-
