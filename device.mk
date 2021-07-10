@@ -35,8 +35,8 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay 
 
 # Smart Charge
-PRODUCT_PACKAGES += \
-    vendor.lineage.smartcharge@1.0-service
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.smartcharge@1.0-service
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop

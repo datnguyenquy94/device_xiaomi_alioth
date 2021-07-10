@@ -38,7 +38,7 @@
         android:label="@string/device_settings_app_name"
         android:persistent="true">
 
-       <receiver android:name=".BootCompletedReceiver"  
+        <receiver android:name=".BootCompletedReceiver"  
         android:directBootAware="true"             
         android:enabled="true"
         android:exported="true">
