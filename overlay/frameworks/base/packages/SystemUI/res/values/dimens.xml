@@ -37,5 +37,12 @@
     <dimen name="system_icons_keyguard_padding_end">15dp</dimen>
     
 <!--     <dimen name="qqs_padding_top">20dp</dimen> -->
+    <!-- The maximum offset in either direction that elements are moved vertically to prevent
+         burn-in on status bar and navigation bar. -->
+    <dimen name="vertical_max_shift">1.0dp</dimen>
+
+    <!-- The maximum offset in either direction that elements are moved horizontally to prevent
+         burn-in on status bar and navigation bar. -->
+    <dimen name="horizontal_max_shift">12.0dp</dimen>
 
 </resources>
