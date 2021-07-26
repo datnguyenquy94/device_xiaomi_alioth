@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.doze;
+package org.lineageos.settings.d.doze;
 
 import android.content.Context;
 import android.hardware.Sensor;

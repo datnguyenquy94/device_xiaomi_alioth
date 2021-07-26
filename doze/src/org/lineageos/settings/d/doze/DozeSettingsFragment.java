@@ -15,14 +15,13 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.doze;
+package org.lineageos.settings.d.doze;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,13 +33,14 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import org.lineageos.settings.R;
+import org.lineageos.settings.d.R;
 
 public class DozeSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
         CompoundButton.OnCheckedChangeListener {
@@ -51,6 +51,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
     private SwitchPreference mAlwaysOnDisplayPreference;
 
     private SwitchPreference mPickUpPreference;
+    private SwitchPreference mPocketPreference;
 
     private Handler mHandler = new Handler();
 
@@ -73,12 +74,18 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mAlwaysOnDisplayPreference.setChecked(DozeUtils.isAlwaysOnEnabled(getActivity()));
         mAlwaysOnDisplayPreference.setOnPreferenceChangeListener(this);
 
+        PreferenceCategory pocketSensorCategory = (PreferenceCategory) getPreferenceScreen().
+                findPreference(DozeUtils.CATEG_POCKET_SENSOR);
         PreferenceCategory pickupSensorCategory = (PreferenceCategory) getPreferenceScreen().
                 findPreference(DozeUtils.CATEG_PICKUP_SENSOR);
-
+        
         mPickUpPreference = (SwitchPreference) findPreference(DozeUtils.GESTURE_PICK_UP_KEY);
         mPickUpPreference.setEnabled(dozeEnabled);
         mPickUpPreference.setOnPreferenceChangeListener(this);
+        
+        mPocketPreference = (SwitchPreference) findPreference(DozeUtils.GESTURE_POCKET_KEY);
+        mPocketPreference.setEnabled(dozeEnabled);
+        mPocketPreference.setOnPreferenceChangeListener(this);
 
         // Hide AOD if not supported and set all its dependents otherwise
         if (!DozeUtils.alwaysOnDisplayAvailable(getActivity())) {
@@ -90,7 +97,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         final View view = LayoutInflater.from(getContext()).inflate(R.layout.doze,
                 container, false);
         ((ViewGroup) view).addView(super.onCreateView(inflater, container, savedInstanceState));
@@ -144,6 +151,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mAlwaysOnDisplayPreference.setEnabled(isChecked);
 
         mPickUpPreference.setEnabled(isChecked);
+        mPocketPreference.setEnabled(isChecked);
     }
 
     @Override
@@ -153,6 +161,11 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
             return true;
         }
         return false;
+    }
+
+    private void showHelp() {
+        HelpDialogFragment fragment = new HelpDialogFragment();
+        fragment.show(getFragmentManager(), "help_dialog");
     }
 
     private static class HelpDialogFragment extends DialogFragment {
@@ -172,10 +185,5 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
                     .putBoolean("first_help_shown", true)
                     .commit();
         }
-    }
-
-    private void showHelp() {
-        HelpDialogFragment fragment = new HelpDialogFragment();
-        fragment.show(getFragmentManager(), "help_dialog");
     }
 }
