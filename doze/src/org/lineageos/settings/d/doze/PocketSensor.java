@@ -34,7 +34,7 @@ public class PocketSensor implements SensorEventListener {
     private static final String TAG = "PocketProtection";
     private static final boolean DEBUG = false;
     
-    private static final int F_TIME = 3000;
+    private static final int F_TIME = 2400;
     
     //Max Proximity Sensor distance in cm
     private float DISTANCE_MAX_VALUE;
@@ -74,8 +74,8 @@ public class PocketSensor implements SensorEventListener {
         
         if(mPocketProtection){
         
-            boolean isNear = lpe < (DISTANCE_MAX_VALUE/4);
-            boolean isLowLight = lle < 2;
+            boolean isNear = (lpe < (DISTANCE_MAX_VALUE/4) && lpe != -1);
+            boolean isLowLight = (lle < 2 && lle != -1);
         
             if (mPickedUp) return;
             if (isNear && isLowLight) {
@@ -128,6 +128,8 @@ public class PocketSensor implements SensorEventListener {
     protected void disable_On() {
             if (DEBUG) Log.d(TAG, "Disabling on");
             mPickedUp=true;
+            lle=-1;
+            lpe=-1;
             mSensorManager.unregisterListener(this, mPickUpSensor);
             mSensorManager.unregisterListener(this, mProximitySensor);
             mSensorManager.unregisterListener(this, mLightSensor);
